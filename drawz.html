@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>  
+    <script src="./drawz.js"></script>
+
+</head>  
+
+<body>
+    <div id="canvas_wrapper"></div>
+    
+    <script>
+        
+        // creates a new Drawz object 
+        var stage = new Drawz(  "canvas_wrapper",
+                                200,
+                                200,
+                                "border:1px solid black;" +
+                                "background:#ccc;");
+        
+        // stage a new style object
+        var style = stage.create_style("red",3,"black")
+        
+        // draw a rectangle and give it a style
+        stage.draw_rect(75,75,50,50,style)
+        
+        // and with no style (using standard style)
+        stage.draw_rect(65,65,50,50)
+        
+        // change some style properties
+        style.rotation = 45;
+        style.fill_color = "blue";
+        
+        // draw a new rectangle using the changed style
+        stage.draw_rect(10,10,20,30,style)
+        
+        style.rotation = 0;
+        style.fill_color = "yellow";
+        
+        // draw a circle
+        stage.draw_circle(60,40,20,style)
+        
+        // change the style again
+        style.fill_color = "green";
+        style.stroke_width = 5;
+        style.stroke_color = "white";
+        
+        // draw a path
+        stage.draw_line([[125,125],[150,175],[125,175],[90,140],[125,125]],true,style)
+
+        // edit the style
+        style.fill_color = "black";
+        style.stroke_color = "";
+        
+        // draw a triangle
+        stage.draw_triang(150,100,30,60,style)
+    </script>
+</body>
+</html>
