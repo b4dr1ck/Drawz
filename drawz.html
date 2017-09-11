@@ -18,42 +18,45 @@
                                 "border:1px solid black;" +
                                 "background:#ccc;");
         
-        // stage a new style object
+        // creates a new style object
         var style = stage.create_style("red",3,"black")
         
-        // draw a rectangle and give it a style
+        // draws a rectangle and give it a style
         stage.draw_rect(75,75,50,50,style)
         
-        // and with no style (using standard style)
+        // draws a rectangle with no style (using standard styling)
         stage.draw_rect(65,65,50,50)
         
-        // change some style properties
+        // changes some style properties
         style.rotation = 45;
         style.fill_color = "blue";
         
-        // draw a new rectangle using the changed style
+        // draws a new rectangle using the changed style settings
         stage.draw_rect(10,10,20,30,style)
         
+        // changes again some style properties
         style.rotation = 0;
         style.fill_color = "yellow";
         
-        // draw a circle
+        // draws a circle
         stage.draw_circle(60,40,20,style)
         
-        // change the style again
-        style.fill_color = "green";
-        style.stroke_width = 5;
-        style.stroke_color = "white";
+        // creates a new style object
+        var style2 = stage.create_style()
+        style2.fill_color = ["blue","red"];
+        style2.stroke_width = 5;
+        style2.gradient = ["radial","auto"]
+        style2.stroke_color = "yellow";
         
-        // draw a path
-        stage.draw_line([[125,125],[150,175],[125,175],[90,140],[125,125]],true,style)
+        // draws a path
+        stage.draw_line([[125,125],[150,175],[125,175],[90,140],[125,125]],true,style2)
 
-        // edit the style
-        style.fill_color = "black";
-        style.stroke_color = "";
+        // edits the style again
+        style2.fill_color = "black";
+        style2.stroke_color = "";
         
-        // draw a triangle
-        stage.draw_triang(150,100,30,60,style)
+        // draws a triangle
+        stage.draw_triang(150,100,30,60,style2)
     </script>
 </body>
 </html>

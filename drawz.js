@@ -37,9 +37,9 @@ function Drawz(wrapper_id,width,height,css) {
         frame.clearRect(0,0,width,height)
     }
     
+    
     function draw_line(path,close_path,style)
     {
-        
         var width = 0;
         var height = 0;
         var x = 0;
@@ -65,19 +65,15 @@ function Drawz(wrapper_id,width,height,css) {
         }
         
         frame.moveTo(path[0][0],path[0][1]);
-        var x_max = 0;
-        var y_max = 0;
         for (var i=1; i < path.length; i++) {
             frame.lineTo(path[i][0],path[i][1])
-            x_max = Math.max(x_max,path[i][0])
-            y_max = Math.max(y_max,path[i][1])
         }
         
         if (close_path) {
             frame.closePath();
         }
            
-        style_me(x,y,width,height,style);
+        style_me(x,y,width-x,height-y,style);
         
         if (style && style.rotation) {frame.restore();}
     }
@@ -137,9 +133,7 @@ function Drawz(wrapper_id,width,height,css) {
     function style_me(x,y,width,height,style) 
     {     
         if (!style) {
-            frame.lineWidth = 1;
-            frame.stroke();
-            return;
+            style = create_style("", 1, "black")
         }
 
         if (style.fill_color) {
